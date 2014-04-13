@@ -1,4 +1,4 @@
 voltage-divider
 ===============
 
-simple example on how a voltage divider works
+An interactive example on how a voltage divider works.

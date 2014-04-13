@@ -1,14 +1,12 @@
 <html>
   <head>
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="index.css" />
-    <script type="text/javascript" src="electric_circuit_calculator.js"></script>
-    <script type="text/javascript" src="Tangle.js"></script>
-    <link rel="stylesheet" href="TangleKit/TangleKit.css" type="text/css">
-    <script type="text/javascript" src="TangleKit/mootools.js"></script>
-    <script type="text/javascript" src="TangleKit/sprintf.js"></script>
-    <script type="text/javascript" src="TangleKit/BVTouchable.js"></script>
-    <script type="text/javascript" src="TangleKit/TangleKit.js"></script>
+    <script type="text/javascript" src="js/electric_circuit_calculator.js"></script>
+    <script type="text/javascript" src="js/Tangle.js"></script>
+    <link rel="stylesheet" href="js/TangleKit/TangleKit.css" type="text/css">
+    <script type="text/javascript" src="js/TangleKit/mootools.js"></script>
+    <script type="text/javascript" src="js/TangleKit/sprintf.js"></script>
+    <script type="text/javascript" src="js/TangleKit/BVTouchable.js"></script>
+    <script type="text/javascript" src="js/TangleKit/TangleKit.js"></script>
     <script type="text/javascript">
       function setUpTangle(){
         var tangle = new Tangle (document.getElementById("voltageDivider"), {
@@ -28,11 +26,12 @@
       }
     </script>
   </head>
-  <body id="voltageDivider" onload="setUpTangle()">
-    <h3>Voltage divider</h3>
-    <p style="max-width:40em">A <a href="https://en.wikipedia.org/wiki/Voltage_divider">voltage divider</a> produces an output voltage that is a fraction of its input voltage. For V<sub>in</sub> = 10V with a resistance R<sub>1</sub> = <span data-var="r1" class="TKAdjustableNumber" data-min="80" data-max="1000" data-step="10"></span> &Omega; and a resistance R<sub>2</sub> = <span data-var="r2" class="TKAdjustableNumber" data-min="80" data-max="1000" data-step="10"></span> &Omega;, <b>V<sub>out</sub> = <span data-var="vout" data-format="%.2f"></span>V</b>.</p>
+  <body id="voltageDivider" style="max-width:45em; text-align:justify; margin: 3em auto;" onload="setUpTangle()">
+    <h1>Voltage divider</h1>
+    <p >A <a href="https://en.wikipedia.org/wiki/Voltage_divider">voltage divider</a> is a circuit that produces an output voltage (V<sub>out</sub>) that is a fraction of its input voltage (V<sub>in</sub>).</p>
+      </p>In the following example, drag the values of the resistances to learn how the output voltage varies: being the input voltage V<sub>in</sub> = 10V, the resistances R<sub>1</sub> = <span data-var="r1" class="TKAdjustableNumber" data-min="80" data-max="1000" data-step="10"></span> &Omega; and R<sub>2</sub> = <span data-var="r2" class="TKAdjustableNumber" data-min="80" data-max="1000" data-step="10"></span> &Omega; the output voltage is <b>V<sub>out</sub> = <span data-var="vout" data-format="%.2f"></span>V</b>.</p>
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-         width="400px" height="300px" viewBox="0 0 800 600" enable-background="new 0 0 800 600" xml:space="preserve">
+         width="300px" height="270px" viewBox="0 0 800 600" enable-background="new 0 0 800 600" xml:space="preserve">
       <line stroke="#000000" stroke-width="7" x1="370" y1="36" x2="370" y2="119"/>
       <line stroke="#000000" stroke-width="7" x1="370" y1="40" x2="169" y2="40"/>
       <line stroke="#000000" stroke-width="7" x1="370" y1="227" x2="370" y2="293"/>
@@ -72,5 +71,14 @@
       <line fill="none" stroke="#000000" stroke-width="7" x1="391.895" y1="474.219" x2="355.386" y2="437.71"/>
       <line fill="none" stroke="#000000" stroke-width="7" x1="369.051" y1="492.344" x2="389.176" y2="472.219"/>
     </svg>
+
+    <h3>A practical example: detecting light and build a "light theremin" with Arduino</h3>
+    <p style="max-width:40em; text-align:justify">Voltage dividers are used for adjusting the level of a signal, for bias of active devices in amplifiers, and for measurement of voltages. Voltage dividers can also be used to allow a microcontroller like the one provided by <a href="http://arduino.cc/">Arduino</a> to measure the resistance of a sensor.</p>
+
+    </p>In the following example, <a href="https://www.youtube.com/watch?v=57S3dylfw3I">Arduino is used to build a Light Theremin</a>:</p>
+
+    <iframe width="560" height="315" src="//www.youtube.com/embed/57S3dylfw3I?rel=0" frameborder="0" allowfullscreen></iframe>
+
+<p>The sensor R<sub>1</sub> (a <a href="https://en.wikipedia.org/wiki/Photoresistor">Light-Dependent Resistor</a>, LDR) is hooked up in a voltage divider alongside a known resistor (R<sub>2</sub>), and a known input voltage is given (V<sub>in</sub>). The output voltage (V<sub>out</sub>) is measured and used to determine how the resistance of the sensor varies (how much light is detecting).</p>
   </body>
 </html>
