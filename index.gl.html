@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <script type="text/javascript" src="js/electric_circuit_calculator.js"></script>
+    <script type="text/javascript" src="js/Tangle.js"></script>
+    <link rel="stylesheet" href="js/TangleKit/TangleKit.css" type="text/css">
+    <script type="text/javascript" src="js/TangleKit/mootools.js"></script>
+    <script type="text/javascript" src="js/TangleKit/sprintf.js"></script>
+    <script type="text/javascript" src="js/TangleKit/BVTouchable.js"></script>
+    <script type="text/javascript" src="js/TangleKit/TangleKit.js"></script>
+    <script type="text/javascript">
+      function setUpTangle(){
+        var tangle = new Tangle (document.getElementById("voltageDivider"), {
+          initialize: function () {
+            this.vin = 10;
+            this.r1 = 220;
+            this.r2 = 220;
+            this.vout = 5;
+          },
+          update: function () {
+            this.vout = ecc.voltage_divider(this.vin, this.r1, this.r2);
+            document.getElementById("r1-svg").set('text', this.r1 + ' \u03A9');
+            document.getElementById("r2-svg").set('text', this.r2 + ' \u03A9');
+            document.getElementById("vout-svg").set('text', this.vout.toFixed(2) + 'V');
+          }
+        });
+      }
+    </script>
+  </head>
+  <body id="voltageDivider" style="max-width:45em; text-align:justify; margin: 3em auto;" onload="setUpTangle()">
+    <h1>Divisor de tensi&oacute;n</h1>
+    <p>Un <a href="https://es.wikipedia.org/wiki/Divisor_de_tensi%C3%B3n">divisor de tensi&oacute;n</a> &eacute; un circuito que reparte a tensi&oacute;n dunha fonte (V<sub>in</sub>) entre varias impedancias conectadas en serie, producindo unha voltaxe de sa&iacute;da (V<sub>out</sub>) dependente da entrada.</p>
+      </p>Move os valores das resistencias no seguinte exemplo para ver c&oacute;mo var&iacute;a a voltaxe de sa&iacute;da: sendo a voltaxe de entrada V<sub>in</sub> = 10V, as resistencias R<sub>1</sub> = <span data-var="r1" class="TKAdjustableNumber" data-min="80" data-max="1000" data-step="10"></span> &Omega; and R<sub>2</sub> = <span data-var="r2" class="TKAdjustableNumber" data-min="80" data-max="1000" data-step="10"></span> &Omega; a voltaxe de sa&iacute;da &eacute; <b>V<sub>out</sub> = <span data-var="vout" data-format="%.2f"></span>V</b>.</p>
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         width="300px" height="270px" viewBox="0 0 800 600" enable-background="new 0 0 800 600" xml:space="preserve">
+      <line stroke="#000000" stroke-width="7" x1="370" y1="36" x2="370" y2="119"/>
+      <line stroke="#000000" stroke-width="7" x1="370" y1="40" x2="169" y2="40"/>
+      <line stroke="#000000" stroke-width="7" x1="370" y1="227" x2="370" y2="293"/>
+      <line stroke="#000000" stroke-width="7" x1="370" y1="315.979" x2="370" y2="380.678"/>
+      <line stroke="#000000" stroke-width="7" x1="370" y1="490" x2="370" y2="555"/>
+      <line stroke="#000000" stroke-width="7" x1="385" y1="305" x2="567" y2="305"/>
+      <line stroke="#000000" stroke-width="7" x1="345" y1="555" x2="400" y2="555"/>
+      <line stroke="#000000" stroke-width="7" x1="385" y1="570" x2="358" y2="570"/>
+      <line stroke="#000000" stroke-width="7" x1="365.172" y1="583" x2="376.328" y2="583"/>
+      <circle stroke="#000000" stroke-width="7" cx="370.5" cy="305.5" r="12.5"/>
+      <text transform="matrix(1 0 0 1 277 195)">
+        <tspan x="0" y="0" stroke="#000000" font-family="'MyriadPro-Regular'" font-size="69">R</tspan>
+        <tspan x="50" y="0" stroke="#000000" font-family="'MyriadPro-Regular'" font-size="24">1</tspan>
+        <tspan id="r1-svg" x="150" y="0" stroke="#000000" font-family="'MyriadPro-Regular'" font-size="48">120 &Omega;</tspan>
+      </text>
+      <text transform="matrix(1 0 0 1 100 57)">
+        <tspan x="0" y="0" stroke="#000000" font-family="'MyriadPro-Regular'" font-size="69">V</tspan>
+        <tspan x="40" y="0" stroke="#000000" font-family="'MyriadPro-Regular'" font-size="24">in</tspan>
+        <tspan x="0" y="50" stroke="#000000" font-family="'MyriadPro-Regular'" font-size="48">10V</tspan>
+      </text>
+      <text transform="matrix(1 0 0 1 560 324)">
+        <tspan x="0" y="0" stroke="#000000" font-family="'MyriadPro-Regular'" font-size="69">V</tspan>
+        <tspan x="40" y="0" stroke="#000000" font-family="'MyriadPro-Regular'" font-size="24">out</tspan>
+        <tspan id="vout-svg" x="100" y="0" stroke="#000000" font-family="'MyriadPro-Regular'" font-size="48">5V</tspan>
+      </text>
+      <text transform="matrix(1 0 0 1 277 454)">
+        <tspan x="0" y="0" stroke="#000000" font-family="'MyriadPro-Regular'" font-size="69">R</tspan>
+        <tspan x="50" y="0" stroke="#000000" font-family="'MyriadPro-Regular'" font-size="24">2</tspan>
+        <tspan id="r2-svg" x="150" y="0" stroke="#000000" font-family="'MyriadPro-Regular'" font-size="48">100 &Omega;</tspan>
+      </text>
+      <line fill="none" stroke="#000000" stroke-width="7" x1="368.938" y1="116.125" x2="394.312" y2="141.5"/>
+      <line fill="none" stroke="#000000" stroke-width="7" x1="396.375" y1="138.875" x2="358.375" y2="176.875"/>
+      <line fill="none" stroke="#000000" stroke-width="7" x1="391.781" y1="211.688" x2="355.272" y2="175.179"/>
+      <line fill="none" stroke="#000000" stroke-width="7" x1="368.938" y1="229.812" x2="389.062" y2="209.688"/>
+      <line fill="none" stroke="#000000" stroke-width="7" x1="369.051" y1="378.656" x2="394.426" y2="404.031"/>
+      <line fill="none" stroke="#000000" stroke-width="7" x1="396.489" y1="401.406" x2="358.489" y2="439.406"/>
+      <line fill="none" stroke="#000000" stroke-width="7" x1="391.895" y1="474.219" x2="355.386" y2="437.71"/>
+      <line fill="none" stroke="#000000" stroke-width="7" x1="369.051" y1="492.344" x2="389.176" y2="472.219"/>
+    </svg>
+
+    <h3>Un exemplo pr&aacute;ctico: detectando luz e construindo un "theremin de luz" con Arduino</h3>
+    <p style="max-width:40em; text-align:justify">Os divisores de tensi&oacute;n son usados para axustar o nivel dunha sinal e para medidas de voltaxe. Poden ser tam&eacute;n usados para medir a resistencia dun sensor mediante un microcontrolador como o proporcionado por <a href="http://arduino.cc/">Arduino</a>.</p>
+
+    </p>No seguinte exemplo, <a href="https://www.youtube.com/watch?v=57S3dylfw3I">&uacute;sase un Arduino para construir un "theremin de luz"</a>:</p>
+
+    <iframe width="560" height="315" src="//www.youtube.com/embed/57S3dylfw3I?rel=0" frameborder="0" allowfullscreen></iframe>
+
+<p>O sensor LDR -do ingl&eacute;s <a href="https://en.wikipedia.org/wiki/Photoresistor">Light-Dependent Resistor</a>- (R<sub>1</sub>) con&eacute;ctase en serie cunha resistencia (R<sub>2</sub>), formando un divisor de tensi&oacute;n. Dada unha tensi&oacute;n de entrada co&ntilde;ecida (V<sub>in</sub>), a medida da tensi&oacute;n de sa&iacute;da (V<sub>out</sub>) permite determinar c&oacute;mo var&iacute;a a resistencia do sensor e desa maneira co&ntilde;ecer canta luz est&aacute; detectando.</p>
+  </body>
+</html>
